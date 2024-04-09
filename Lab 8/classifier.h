@@ -9,4 +9,3 @@ public:
 	virtual bool test(std::string filePath, int& ourErrors) = 0;
 	virtual bool predict(std::string filePath) = 0;
 };
-

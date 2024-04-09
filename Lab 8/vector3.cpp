@@ -44,7 +44,7 @@ float Vector3::distance(Vector3& v) {
 }
 
 ostream& operator <<(ostream& cout, Vector3& v) {
-	cout << v.x << ", " << v.y << ", " << v.z;
+	cout << v.x << "," << v.y << "," << v.z;
 	return cout;
 }
 

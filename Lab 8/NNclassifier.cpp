@@ -6,10 +6,6 @@
 
 using namespace std;
 
-NNClassifier::NNClassifier() {
-	
-}
-
 bool NNClassifier::train(string filePath) {
 	ifstream fin;
 	fin.open(filePath);
@@ -28,21 +24,22 @@ bool NNClassifier::train(string filePath) {
 		getline(lineStream, z, ',');
 		getline(lineStream, label);
 
-		Vector3 newData = Vector3(stof(x), stof(y), stof(z));
+		ClassifierData newData = ClassifierData(Vector3(stof(x), stof(y), stof(z)), stoi(label));
 
 		trainingData.push_back(newData);
-		trainingDataTable.insert({ newData, stoi(label) });
 	}
 
 	return true;
 }
 
 bool NNClassifier::test(string filePath, int& outErrors) {
+	outErrors = 0;
+
 	ifstream fin;
 	fin.open(filePath);
 	if (!fin.is_open()) {
 		outErrors = -1;
-		return outErrors;
+		return false;
 	}
 
 	string line;
@@ -59,27 +56,27 @@ bool NNClassifier::test(string filePath, int& outErrors) {
 		Vector3 newData = Vector3(stof(x), stof(y), stof(z));
 		int label = stoi(sLabel);
 
-		map<float, tuple<Vector3, int>> distances;
-		for (Vector3 trainingVec : trainingData) {
-			int label = trainingDataTable[trainingVec];
-			float dist = newData.distance(trainingVec);
-			distances.insert({ dist, { trainingVec, label } });
+		map<float, ClassifierData> distances;
+		for (ClassifierData data : trainingData) {
+			Vector3 otherVec = data.getVector();
+			float dist = newData.distance(otherVec);
+			distances.insert({ dist, data });
 		}
 
-		int testLabel = get<1>(distances[distances.begin()->first]);
+		int testLabel = distances[distances.begin()->first].getLabel();
 		if (label != testLabel) {
 			outErrors++;
 		}
 	}
 
-	return outErrors;
+	return true;
 }
 
 bool NNClassifier::predict(string filePath) {
 	ifstream fin;
 	fin.open(filePath);
 	if (!fin.is_open()) {
-		return;
+		return false;
 	}
 
 	string line;
@@ -94,19 +91,20 @@ bool NNClassifier::predict(string filePath) {
 
 		Vector3 newData = Vector3(stof(x), stof(y), stof(z));
 
-		map<float, tuple<Vector3, int>> distances;
-		for (Vector3 trainingVec : trainingData) {
-			int label = trainingDataTable[trainingVec];
-			float dist = newData.distance(trainingVec);
-			distances.insert({ dist, { trainingVec, label } });
+		map<float, ClassifierData> distances;
+		for (ClassifierData data : trainingData) {
+			Vector3 otherVec = data.getVector();
+			float dist = newData.distance(otherVec);
+			distances.insert({ dist, data });
 		}
 
-		int closest = get<1>(distances[distances.begin()->first]);
-
-		cout << newData << ", " << closest << endl;
+		int closest = distances[distances.begin()->first].getLabel();
+		predictedData.push_back(ClassifierData(newData, closest));
 	}
+
+	return true;
 }
 
-vector<Vector3>& NNClassifier::GetTrainingData() {
-	return trainingData;
+vector<ClassifierData>& NNClassifier::getPredictedData() {
+	return predictedData;
 }
