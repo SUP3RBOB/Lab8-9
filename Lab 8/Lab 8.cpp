@@ -72,9 +72,7 @@ int main() {
         Vector3 vec = Vector3::parse(vecString);
         classifier.predictSingle(vec);
         
-        for (ClassifierData data : classifier.getPredictedData()) {
-            cout << data << endl;
-        }
+        cout << classifier.getPredictedData().back() << endl;
 
         exit(EXIT_SUCCESS);
     }
