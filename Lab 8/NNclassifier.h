@@ -1,6 +1,5 @@
 #pragma once
 #include "classifier.h"
-#include "classifier_data.h"
 
 class NNClassifier : public Classifier {
 public:
