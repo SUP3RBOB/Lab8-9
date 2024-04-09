@@ -88,8 +88,7 @@ int main() {
 
         try {
             classifier.predict(filePath);
-        }
-        catch (FileIOException e) {
+        } catch (FileIOException e) {
             cout << e.what() << endl;
             exit(EXIT_FAILURE);
         }
