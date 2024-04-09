@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 
 class Vector3 {
 private:
@@ -22,12 +23,9 @@ public:
 
 	float distance(Vector3& v);
 
+	static Vector3 parse(std::string vecString);
+
 	friend std::ostream& operator <<(std::ostream& cout, Vector3& v);
-
-	struct VectorHash {
-		std::size_t operator ()(const Vector3& vec) const;
-	};
-
-	bool operator ==(const Vector3& vec) const;
+	friend std::ofstream& operator <<(std::ofstream& fout, Vector3& v);
 };
 

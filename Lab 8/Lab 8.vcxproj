@@ -127,15 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="another_classifier.cpp" />
     <ClCompile Include="classifier.cpp" />
     <ClCompile Include="classifier_data.cpp" />
+    <ClCompile Include="file_io_exception.cpp" />
+    <ClCompile Include="KNNclassifier.cpp" />
     <ClCompile Include="Lab 8.cpp" />
     <ClCompile Include="NNclassifier.cpp" />
     <ClCompile Include="vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="another_classifier.h" />
     <ClInclude Include="classifier.h" />
     <ClInclude Include="classifier_data.h" />
+    <ClInclude Include="file_io_exception.h" />
+    <ClInclude Include="KNNclassifier.h" />
     <ClInclude Include="NNclassifier.h" />
     <ClInclude Include="vector3.h" />
   </ItemGroup>

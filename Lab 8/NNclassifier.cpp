@@ -3,19 +3,19 @@
 #include <string>
 #include <sstream>
 #include <map>
+#include "file_io_exception.h"
 
 using namespace std;
 
-bool NNClassifier::train(string filePath) {
+void NNClassifier::train(string filePath) {
 	ifstream fin;
 	fin.open(filePath);
 	if (!fin.is_open()) {
-		return false;
+		throw FileIOException();
 	}
 
 	string line;
 	while (getline(fin, line)) {
-
 		istringstream lineStream = istringstream(line);
 
 		string x, y, z, label;
@@ -29,22 +29,21 @@ bool NNClassifier::train(string filePath) {
 		trainingData.push_back(newData);
 	}
 
-	return true;
+	fin.close();
 }
 
-bool NNClassifier::test(string filePath, int& outErrors) {
+void NNClassifier::test(string filePath, int& outErrors) {
 	outErrors = 0;
 
 	ifstream fin;
 	fin.open(filePath);
 	if (!fin.is_open()) {
 		outErrors = -1;
-		return false;
+		throw FileIOException();
 	}
 
 	string line;
 	while (getline(fin, line)) {
-
 		istringstream lineStream = istringstream(line);
 
 		string x, y, z, sLabel;
@@ -69,19 +68,18 @@ bool NNClassifier::test(string filePath, int& outErrors) {
 		}
 	}
 
-	return true;
+	fin.close();
 }
 
-bool NNClassifier::predict(string filePath) {
+void NNClassifier::predict(string filePath) {
 	ifstream fin;
 	fin.open(filePath);
 	if (!fin.is_open()) {
-		return false;
+		throw FileIOException();
 	}
 
 	string line;
 	while (getline(fin, line)) {
-
 		istringstream lineStream = istringstream(line);
 
 		string x, y, z;
@@ -102,9 +100,29 @@ bool NNClassifier::predict(string filePath) {
 		predictedData.push_back(ClassifierData(newData, closest));
 	}
 
-	return true;
+	fin.close();
+
+	ofstream fout;
+	fout.open("results.txt");
+	if (!fout.is_open()) {
+		throw FileIOException();
+	}
+
+	for (ClassifierData data : predictedData) {
+		fout << data << endl;
+	}
+
+	fout.close();
 }
 
-vector<ClassifierData>& NNClassifier::getPredictedData() {
-	return predictedData;
+void NNClassifier::predictSingle(Vector3& vec) {
+	map<float, ClassifierData> distances;
+	for (ClassifierData data : trainingData) {
+		Vector3 otherVec = data.getVector();
+		float dist = vec.distance(otherVec);
+		distances.insert({ dist, data });
+	}
+
+	int closest = distances[distances.begin()->first].getLabel();
+	predictedData.push_back(ClassifierData(vec, closest));
 }

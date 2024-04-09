@@ -30,6 +30,15 @@
     <ClCompile Include="classifier_data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="file_io_exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="another_classifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KNNclassifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="classifier.h">
@@ -42,6 +51,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="classifier_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file_io_exception.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="another_classifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KNNclassifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

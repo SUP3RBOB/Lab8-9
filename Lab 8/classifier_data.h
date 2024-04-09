@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
-#include "vector3.h"
+#include <fstream>
 #include <unordered_map>
+#include "vector3.h"
 #define MAX_ORIENTATIONS 6
 
 class ClassifierData {
@@ -25,4 +26,5 @@ public:
 	void setLabel(int label);
 
 	friend std::ostream& operator <<(std::ostream& cout, ClassifierData data);
+	friend std::ofstream& operator <<(std::ofstream& fout, ClassifierData data);
 };

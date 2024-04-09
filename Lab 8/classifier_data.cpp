@@ -59,3 +59,8 @@ std::ostream& operator <<(std::ostream& cout, ClassifierData data) {
     cout << data.vector << "," << data.label << "," << data.orientation;
     return cout;
 }
+
+std::ofstream& operator <<(std::ofstream& fout, ClassifierData data) {
+    fout << data.vector << "," << data.label << "," << data.orientation;
+    return fout;
+}
