@@ -58,7 +58,7 @@ int main() {
     }
 
     if (errors > 0) {
-        cout << "There is an error with the testing data or algorithm" << endl;
+        cout << "There are " << errors << " errors with the testing data" << endl;
         exit(EXIT_FAILURE);
     }
 
