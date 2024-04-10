@@ -1,10 +1,10 @@
 #pragma once
 #include "classifier.h"
 
-	/// @brief		this is a brief description for the Gps class
-	/// 
-	/// add more detail description here about the Gps class
-	/// @author ___
+/// @brief		this is a brief description for the Gps class
+/// 
+/// add more detail description here about the Gps class
+/// @author Harris Ibrahimi, Chris Hunt, Joshua Salmons
 /// @date 24/04/10
 
 class KNNClassifier : public Classifier {
