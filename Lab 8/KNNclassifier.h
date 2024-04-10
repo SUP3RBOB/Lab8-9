@@ -14,7 +14,7 @@ public:
 	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
 	/// best accuracy (10 cm) about the location
 	/// and if it is set to false the accuracy will be lowest (> 1 m)
-	virtual void train(std::string filePath) override;\
+	virtual void train(std::string filePath) override;
 
 		/// @ brief
 		/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
