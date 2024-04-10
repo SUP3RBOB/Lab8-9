@@ -5,7 +5,7 @@
 	/// 
 	/// add more detail description here about the Gps class
 	/// @author ___
-	/// @date 23/04/15
+/// @date 24/04/10
 
 class KNNClassifier : public Classifier {
 public:
