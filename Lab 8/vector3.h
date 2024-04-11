@@ -18,6 +18,9 @@ public:
 	Vector3();
 
 	/// @brief Parameterized constructor that creates a new 3D vector with the specified parameters
+	/// @param x: The X value of the vector
+	/// @param y: The Y value of the vector
+	/// @param z: The Z value of the vector
 	Vector3(float x, float y, float z);
 
 	/// @brief Getter method that returns the X value of the vector

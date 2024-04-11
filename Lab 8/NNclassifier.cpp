@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Obtains data from a file to learn from
 void NNClassifier::train(string filePath) {
 	ifstream fin;
 	fin.open(filePath);
@@ -32,6 +33,7 @@ void NNClassifier::train(string filePath) {
 	fin.close();
 }
 
+// Obtains test data from a file to check if the algorithm is working
 void NNClassifier::test(string filePath, int& outErrors) {
 	outErrors = 0;
 
@@ -71,6 +73,7 @@ void NNClassifier::test(string filePath, int& outErrors) {
 	fin.close();
 }
 
+// Obtains data from a file to predict
 void NNClassifier::predict(string filePath) {
 	ifstream fin;
 	fin.open(filePath);
@@ -115,6 +118,7 @@ void NNClassifier::predict(string filePath) {
 	fout.close();
 }
 
+// Predicts the label and orientation of a vector
 void NNClassifier::predictSingle(Vector3& vec) {
 	map<float, ClassifierData> distances;
 	for (ClassifierData data : trainingData) {

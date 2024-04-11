@@ -5,84 +5,71 @@
 #include "vector3.h"
 #define MAX_ORIENTATIONS 6
 
-/// @brief		this is a brief description for the Gps class
-/// 
-/// add more detail description here about the Gps class
+/// @brief Data type used by the cllassifiers for storing information
+/// Basic data type that contains information that the classifier pulls from training and test data and also creates
+/// for predicted data
 /// @author Harris Ibrahimi, Chris Hunt, Joshua Salmons
 /// @date 24/04/10
-
 class ClassifierData {
 private:
+
+	/// @brief 3D vector of the data
 	Vector3 vector;
+
+	/// @brief Label of the 3D vector
 	int label;
+
+	/// @brief Orientation label of the 3D vector
 	std::string orientation;
 
+	/// @brief Basic map of labels to orientations
 	static std::unordered_map<int, std::string> orientations;
+
+	/// @brief Internal method used to update the orientation based on the label's value
 	void updateOrientation();
 
 public:
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
+	/// @brief Default constructor that creates empty classifier data
 	ClassifierData();
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
+	/// @brief Paramaterized constructor that creates classifier data with the specified values
+	/// @param Vector: The vector of the classifier data
+	/// @param Label: The numbered label of the classifier data
 	ClassifierData(Vector3 vector, int label);
 
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
-	/// @ return if the return value is true that means the Gps is started
+	/// @brief Gets the vector of the classifier data
+	/// @return The vector of the classifier data
 	Vector3 getVector();
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
-	/// @ return if the return value is true that means the Gps is started
+	/// @brief Gets the label of the classifier data
+	/// @return The label of the classifier data
 	int getLabel();
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
-	/// @ return if the return value is true that means the Gps is started	
+	/// @brief Gets the orientation label of the classifier data
+	/// @return The orientation label of the classifier data
 	std::string getOrientation();
 
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
-	/// @ return
+	/// @brief Sets the vector of the classifier data
+	/// @param vector: The new vector of the classifier data
 	void setVector(Vector3 vector);
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
-	/// @ return
+	/// @brief Sets the label of the classifier data
+	/// @param label: The new label of the classifier data
 	void setLabel(int label);
 
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
-	/// @ return
+	/// @breif Operator overload that allows for cout to print classifier data
+	/// @param cout: The main standard cout object used for outputting to the console
+	/// @param data: The classifier data that needs to be printed to the console
+	/// @return A reference to cout
 	friend std::ostream& operator <<(std::ostream& cout, ClassifierData data);
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
-	/// @ return
+	/// @breif Operator overload that allows for classifier data to be printed to a file stream
+	/// @param fout: The main standard object used for printing text to a file
+	/// @param data: The classifier data that needs to be printed to the file
+	/// @return A reference to file stream object
 	friend std::ofstream& operator <<(std::ofstream& fout, ClassifierData data);
 };

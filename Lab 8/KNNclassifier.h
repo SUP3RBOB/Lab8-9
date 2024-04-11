@@ -1,30 +1,22 @@
 #pragma once
 #include "classifier.h"
 
-/// @brief		this is a brief description for the Gps class
-/// 
-/// add more detail description here about the Gps class
+/// @brief Classifier class that implements the K Nearest Neighbour Classifier
 /// @author Harris Ibrahimi, Chris Hunt, Joshua Salmons
 /// @date 24/04/10
-
 class KNNClassifier : public Classifier {
 public:
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
+	/// @brief Unfinished method that prints out its own name
+	/// @param filePath: Path to the file
 	virtual void train(std::string filePath) override;
 
-		/// @ brief
-		/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-		/// best accuracy (10 cm) about the location
-		/// and if it is set to false the accuracy will be lowest (> 1 m)
+	/// @brief Unfinished method that prints out its own name
+	/// @param filePath: Path to the file
+	/// @param outErrors: Output parameter that does absolutely nothing
 	virtual void test(std::string filePath, int& outErrors) override;
 
-	/// @ brief
-	/// @param accuracy this is the accuracy of the Gps and if it is set to true the Gps will have 
-	/// best accuracy (10 cm) about the location
-	/// and if it is set to false the accuracy will be lowest (> 1 m)
+	/// @brief Unfinished method that prints out its own name
+	/// @param filePath: Path to the file
 	virtual void predict(std::string filePath) override;
 };
