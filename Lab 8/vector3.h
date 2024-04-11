@@ -9,8 +9,14 @@
 /// @date 24/04/10
 class Vector3 {
 private:
+
+	/// @brief The X value of the vector
 	float x;
+
+	/// @brief The Y value of the vector
 	float y;
+
+	/// @brief The Z value of the vector
 	float z;
 
 public:
