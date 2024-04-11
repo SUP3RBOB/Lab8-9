@@ -1,5 +1,8 @@
-// Lab 8.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/*
+* PROG71020 - Lab 8 - 9 Machine Learning
+* Harris Ibrahimi - Chris Hunt - Joshua Salmons
+*/
+
 #include "NNclassifier.h"
 #include <string>
 #include "file_io_exception.h"
